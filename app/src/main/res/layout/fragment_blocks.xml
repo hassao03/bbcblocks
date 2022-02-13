@@ -5,7 +5,12 @@
     android:id="@+id/blocks_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/blocks_scene3">
+    app:layoutDescription="@xml/fragment_blocks_scene">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <View
         android:id="@+id/toolbar_view"
@@ -51,9 +56,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar_view"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lottie_view"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_cast_24" />
 
@@ -67,8 +71,8 @@
         app:layout_constraintGuide_begin="60dp"
         app:layout_constraintStart_toEndOf="@+id/toolbar_view" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh"
+    <com.carouselapp.myapplication.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -91,5 +95,5 @@
         </androidx.core.widget.NestedScrollView>
 
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </com.carouselapp.myapplication.SwipeRefreshLayout>
 </androidx.constraintlayout.motion.widget.MotionLayout>
