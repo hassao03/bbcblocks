@@ -45,6 +45,8 @@ class BlocksFragment : Fragment() {
 
     private fun setScroll() {
         binding.blocksRoot.setTransition(R.id.animation_transition)
+        binding.blocksRoot.getConstraintSet(R.id.end).setFloatValue(R.id.lottie_view, "Progress", 0.0f)
+        binding.blocksRoot.getConstraintSet(R.id.start).setFloatValue(R.id.lottie_view, "Progress", 0.0f)
 
         val scrollview = binding.nestedScrollView
         scrollview.viewTreeObserver
@@ -54,24 +56,22 @@ class BlocksFragment : Fragment() {
 
                     val scrollViewHeight: Double = (scrollview.getChildAt(0).bottom - scrollview.height).toDouble()
                     val getScrollY: Double = scrollview.scrollY.toDouble()
-                    val scrollPosition2 = getScrollY / scrollViewHeight * 100.0
+
                     val scrollPosition = getScrollY / scrollViewHeight
-//                    Log.e("@logs", "scroll $scrollPosition2")
 
                     val scrollY: Int = scrollview.scrollY
                     if (scrollY > lastScroll) {
-                        if (binding.lottieView.progress < 0.21f) {
+                        if (binding.lottieView.progress < 0.08f) {
                             binding.lottieView.progress = scrollPosition.toFloat()
                         }
-                        Log.e("@logs", "down $scrollY")
-                    } else if (scrollY < lastScroll) {
-//                        if (binding.lottieView.progress == 0.21f) {
-                            binding.lottieView.progress = scrollPosition.toFloat()
-//                        }
-                        Log.e("@logs", "up $scrollY")
+
+//                        Log.e("@logs", "down $scrollY")
+                    }
+                    if(scrollY < lastScroll) {
+//                        Log.e("@logs", "up $scrollY")
                     }
                     lastScroll = scrollY
-//                    Log.e("@logs", "scrollPosition $scrollPosition")
+
                 }
             })
     }
